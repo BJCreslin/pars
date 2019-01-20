@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Person List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Person List</h1>
+<div><a href="/start/">Получить новые данные</a></div>
+
+<div><a href="/getall/">Данные из базы</a></div>
+<br/><br/>
+<div>
+    <div>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+            <tr th:each="product : ${table}">
+                <td th:utext="${product.name}">...</td>
+                <td th:utext="${product.cost}">...</td>
+                <td th:utext="${product.costWithPrior}">...</td>
+                <td th:utext="${product.getGroup()}">...</td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>
