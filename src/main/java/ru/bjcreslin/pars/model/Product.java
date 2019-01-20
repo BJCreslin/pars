@@ -52,14 +52,14 @@ public class Product extends BaseEntity {
     private String adressIMG;
 
     @Basic
-    @Column(name = "group")
+    @Column(name = "groupe_product")
     private String group;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "productourtable",
-            joinColumns = @JoinColumn(name = "producttable_id"),
-            inverseJoinColumns = @JoinColumn(name = "productourtable_id"))
-    private List<ProductOur> productOur = new ArrayList<>();
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "productourtable",
+//            joinColumns = @JoinColumn(name = "producttable_id"),
+//            inverseJoinColumns = @JoinColumn(name = "productourtable_id"))
+//    private List<ProductOur> productOur = new ArrayList<>();
 
 
 

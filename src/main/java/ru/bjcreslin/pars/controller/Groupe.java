@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.bjcreslin.pars.Service.URLGroupeServiceImpl;
 import ru.bjcreslin.pars.model.UrlGroup;
-import ru.bjcreslin.pars.repository.UrlGroupeRepository;
 
 @Slf4j
 @Controller
@@ -16,36 +15,41 @@ import ru.bjcreslin.pars.repository.UrlGroupeRepository;
 public class Groupe {
 
     @Autowired
-    URLGroupeServiceImpl urlGroupeRepository;
+    URLGroupeServiceImpl urlGroupeService;
 
     @RequestMapping("/init")
     public String initGroupe(Model model) {
-        String groupe;
+        String groupeName;
         String url;
         UrlGroup urlGroup;
 
-        groupe = "насосы";
+        groupeName = "насосы";
         url = "https://stroypark.su/catalog/injenernyie-sistemyi-i-oborudovanie/sistemyi-vodosnabjeniya-i-kanalizatsii/nasosnoe-oborudovanie";
 
-        urlGroup = new UrlGroup(groupe, url);
-        urlGroupeRepository.save(urlGroup);
+        urlGroup = new UrlGroup();
+        urlGroup.setNameGroupe(groupeName);
+        urlGroup.setUrlGroupe(url);
+        urlGroupeService.save(urlGroup);
 
 
-        groupe = "расширительные баки";
+        groupeName = "расширительные баки";
         url = "https://stroypark.su/catalog/injenernyie-sistemyi-i-oborudovanie/sistemyi-vodosnabjeniya-i-kanalizatsii/baki-rasshiritelnyie";
 
-        urlGroup = new UrlGroup(groupe, url);
-        urlGroupeRepository.save(urlGroup);
+        urlGroup = new UrlGroup();
+        urlGroup.setNameGroupe(groupeName);
+        urlGroup.setUrlGroupe(url);
+        urlGroupeService.save(urlGroup);
 
 
-        groupe = "водосчетчики";
+        groupeName = "водосчетчики";
         url = "https://stroypark.su/catalog/injenernyie-sistemyi-i-oborudovanie/sistemyi-vodosnabjeniya-i-kanalizatsii/schetchiki-rashoda-vodyi";
 
-        urlGroup = new UrlGroup(groupe, url);
-        urlGroupeRepository.save(urlGroup);
+        urlGroup = new UrlGroup();
+        urlGroup.setNameGroupe(groupeName);
+        urlGroup.setUrlGroupe(url);
+        urlGroupeService.save(urlGroup);
 
-
-        model.addAttribute("table", urlGroupeRepository.getAll());
+        model.addAttribute("table", urlGroupeService.getAll());
         return "indexgroupe";
 
     }
