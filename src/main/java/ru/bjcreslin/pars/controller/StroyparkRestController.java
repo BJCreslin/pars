@@ -7,11 +7,9 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import ru.bjcreslin.pars.Service.ProductServiceImpl;
 import ru.bjcreslin.pars.Service.URLGroupeServiceImpl;
 import ru.bjcreslin.pars.model.Product;
@@ -24,7 +22,7 @@ import java.util.List;
 
 @Slf4j
 @Controller
-@RequestMapping("/start")
+@RequestMapping("/product")
 public class StroyparkRestController {
 
     @Autowired
@@ -33,13 +31,13 @@ public class StroyparkRestController {
     URLGroupeServiceImpl urlGroupeService;
 
     @SneakyThrows
-    @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.ALL_VALUE)
+    @RequestMapping("/action")
     public String action(Model model) {
 
         log.info("запущено");
         List<Product> allProducts = new ArrayList<>();
 
-        String adress = "https://stroypark.su/catalog/injenernyie-sistemyi-i-oborudovanie/sistemyi-vodosnabjeniya-i-kanalizatsii/nasosnoe-oborudovanie";
+        String adress;
 
         for (UrlGroup groupe : urlGroupeService.getAll()) {
             adress = groupe.getUrlGroupe();
@@ -63,6 +61,13 @@ public class StroyparkRestController {
 
                 String costStringWithPrior = element.getElementsByClass("c-product__price-value o-color--orange").text();
 
+                Elements element1 = element.getElementsByClass("c-product-list__media");
+                Elements elementSelect = element1.select("img");
+                String imgURL = elementSelect.attr("src");
+                Element elementSelectS = element1.select("a").first();
+                String productURL = "https://stroypark.su" + elementSelectS.attr("href");
+
+
                 if (costStringNotPrior.isEmpty()) {
                     costStringNotPrior = element.getElementsByClass("c-product__price-value").text();
                 }
@@ -74,9 +79,10 @@ public class StroyparkRestController {
 
                 Product product = new Product();
                 product.setName(name);
-                product.setAdress(adress);
+                product.setAdress(productURL);
                 product.setCost(cost);
-               // product.setGroup(groupe.getNameGroupe());
+                product.setAdressIMG(imgURL);
+                product.setGroup(groupe.getNameGroupe());
                 product.setCostWithPrior(costWithPrior);
 
 
@@ -85,10 +91,17 @@ public class StroyparkRestController {
 
             }
         }
-        model.addAttribute("products", productService.getAll());
+        model.addAttribute("table", productService.getAll());
 
-        System.out.println(allProducts.size());
+
         return "index";
 
+
+    }
+
+    @RequestMapping("/listall")
+    public String listAll(Model model) {
+        model.addAttribute("table", productService.getAll());
+        return "index";
     }
 }

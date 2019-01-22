@@ -15,10 +15,10 @@ import javax.persistence.Table;
 @Table(name = "url_groupe_table")
 public class UrlGroup extends BaseEntity {
 
-    @Column(name = "groupe_name")
+    @Column(name = "groupe_name", insertable = true, updatable = true)
     String nameGroupe;
 
-    @Column(name = "url")
+    @Column(name = "url", insertable = true, updatable = true)
     String urlGroupe;
 
 

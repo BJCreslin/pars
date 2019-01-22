@@ -30,9 +30,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void save(Product product) {
-
+        Product product1 = productRepository.findFirstByName(product.getName());
+        if (product1 != null) {
+            productRepository.delete(product1);
+        }
         productRepository.save(product);
-
     }
 
     @Override
@@ -40,4 +42,6 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAll() {
         return productRepository.findAll();
     }
+
+
 }

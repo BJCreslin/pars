@@ -8,4 +8,5 @@ import ru.bjcreslin.pars.model.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product,Long> {
+    Product findFirstByName(String name);
 }

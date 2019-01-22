@@ -31,28 +31,28 @@ import java.util.List;
 @Table(name = "producttable")
 public class Product extends BaseEntity {
     @Basic
-    @Column(name = "name")
+    @Column(name = "name", insertable = true, updatable = true)
     private String name;
 
 
     @Basic
-    @Column(name = "adress")
+    @Column(name = "adress", insertable = true, updatable = true)
     private String adress;
 
     @Basic
-    @Column(name = "cost")
+    @Column(name = "cost", insertable = true, updatable = true)
     private BigDecimal cost;
 
     @Basic
-    @Column(name = "costwithprior")
+    @Column(name = "costwithprior", insertable = true, updatable = true)
     private BigDecimal costWithPrior;
 
     @Basic
-    @Column(name = "adressimg")
+    @Column(name = "adressimg", insertable = true, updatable = true)
     private String adressIMG;
 
     @Basic
-    @Column(name = "groupe_product")
+    @Column(name = "groupe_product", insertable = true, updatable = true)
     private String group;
 
 //    @ManyToMany(cascade = CascadeType.ALL)

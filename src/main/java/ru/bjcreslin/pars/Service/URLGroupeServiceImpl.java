@@ -29,7 +29,15 @@ public class URLGroupeServiceImpl implements URLGroupeService {
 
     @Override
     public void save(UrlGroup urlGroup) {
-        urlGroupeRepository.save(urlGroup);
+        UrlGroup urlGroup1 = urlGroupeRepository.findFirstByNameGroupe(urlGroup.getNameGroupe());
+        if (urlGroup1 == null) {
+            urlGroupeRepository.save(urlGroup);
+        } else {
+            urlGroupeRepository.delete(urlGroup1);
+            urlGroupeRepository.save(urlGroup);
+        }
+
+
     }
 
     @Override
