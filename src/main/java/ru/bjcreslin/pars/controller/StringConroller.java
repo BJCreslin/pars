@@ -1,5 +1,7 @@
 package ru.bjcreslin.pars.controller;
 
+import org.springframework.ui.Model;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
@@ -8,6 +10,8 @@ import java.math.RoundingMode;
  */
 
 public class StringConroller {
+
+    public static final String PROGRAM_NAME="First logist";
 
     /**
      * @param inText String   - text in format "dd ddd.d0 ₽"
@@ -25,4 +29,7 @@ public class StringConroller {
 
         return solution;
     }
+
+
+
 }

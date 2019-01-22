@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Person List</title>
+    <title>Product List</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
@@ -15,19 +15,11 @@
 
 <div><a href="/file/form">Excell file</a></div>
 <br/><br/>
-<div>
-    <div>
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>Cost</th>
-            </tr>
-            <tr th:each="groupe : ${table}">
-                <td th:utext="${groupe.getNameGroupe()}">...</td>
-                <td th:utext="${groupe.getUrlGroupe()}">...</td>
-            </tr>
-        </table>
-    </div>
-</div>
+<form method="POST" enctype="multipart/form-data"
+      action="/upload">
+    File to upload: <input type="file" name="file"><br /> Name: <input
+        type="text" name="name"><br /> <br /> <input type="submit"
+                                                     value="Upload"> Press here to upload the file!
+</form>
 </body>
 </html>

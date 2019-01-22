@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.bjcreslin.pars.Service.URLGroupeServiceImpl;
 import ru.bjcreslin.pars.model.UrlGroup;
 
+import static ru.bjcreslin.pars.controller.StringConroller.PROGRAM_NAME;
+
 @Slf4j
 @Controller
 @RequestMapping("/groupe")
@@ -50,6 +52,7 @@ public class Groupe {
         urlGroupeService.save(urlGroup);
 
         model.addAttribute("table", urlGroupeService.getAll());
+        model.addAttribute("program_name",PROGRAM_NAME);
         return "indexgroupe";
 
     }

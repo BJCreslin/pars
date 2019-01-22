@@ -19,6 +19,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ru.bjcreslin.pars.controller.StringConroller.PROGRAM_NAME;
+
 
 @Slf4j
 @Controller
@@ -92,7 +94,7 @@ public class StroyparkRestController {
             }
         }
         model.addAttribute("table", productService.getAll());
-
+        model.addAttribute("program_name",PROGRAM_NAME);
 
         return "index";
 
@@ -102,6 +104,7 @@ public class StroyparkRestController {
     @RequestMapping("/listall")
     public String listAll(Model model) {
         model.addAttribute("table", productService.getAll());
+        model.addAttribute("program_name",PROGRAM_NAME);
         return "index";
     }
 }
