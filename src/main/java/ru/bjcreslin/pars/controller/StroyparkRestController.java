@@ -91,6 +91,7 @@ public class StroyparkRestController {
                 allProducts.add(product);
                 productService.save(product);
 
+
             }
         }
         model.addAttribute("table", productService.getAll());
