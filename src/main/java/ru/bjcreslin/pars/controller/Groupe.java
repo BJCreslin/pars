@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.bjcreslin.pars.Service.URLGroupeServiceImpl;
 import ru.bjcreslin.pars.model.UrlGroup;
 
-import static ru.bjcreslin.pars.controller.StringConroller.PROGRAM_NAME;
+import static ru.bjcreslin.pars.controller.StringController.PROGRAM_NAME;
 
 @Slf4j
 @Controller

@@ -9,7 +9,7 @@ import java.math.RoundingMode;
  * Class for String manipulation
  */
 
-public class StringConroller {
+public class StringController {
 
     public static final String PROGRAM_NAME="First logist";
 

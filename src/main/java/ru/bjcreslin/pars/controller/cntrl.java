@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.bjcreslin.pars.Service.ProductServiceImpl;
 
-import static ru.bjcreslin.pars.controller.StringConroller.PROGRAM_NAME;
+import static ru.bjcreslin.pars.controller.StringController.PROGRAM_NAME;
 
 @Controller
 @RequestMapping("/getall")

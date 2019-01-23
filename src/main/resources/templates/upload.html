@@ -6,20 +6,24 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>"${program_name}"</h1>
-<div><a href="/groupe/init/">Группы</a></div>
 
-<div><a href="/product/action">Получить новые данные</a></div>
+<div><a href="">Основное меню</a></div>
 
-<div><a href="/product/listall/">Данные из базы</a></div>
+<div><a href="/groupe/init/">Группы товаров</a></div>
 
-<div><a href="/file/form">Excell file</a></div>
+<div><a href="/product/action">Получить новые данные сайта Стройпарк</a></div>
+
+<div><a href="/product/listall/">Данные из базы данных</a></div>
+
+<div><a href="/transfer/">Перемещения с Центрального в СНТБ8</a></div>
+
 <br/><br/>
-<form method="POST" enctype="multipart/form-data"
-      action="/upload">
-    File to upload: <input type="file" name="file"><br /> Name: <input
-        type="text" name="name"><br /> <br /> <input type="submit"
-                                                     value="Upload"> Press here to upload the file!
-</form>
+<div>
+    <ul>
+        <li th:each="file : ${files}">
+            <a th:href="${file}" th:text="${file}" />
+        </li>
+    </ul>
+</div>
 </body>
 </html>

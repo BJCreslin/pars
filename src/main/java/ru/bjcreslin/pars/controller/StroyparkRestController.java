@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ru.bjcreslin.pars.controller.StringConroller.PROGRAM_NAME;
+import static ru.bjcreslin.pars.controller.StringController.PROGRAM_NAME;
 
 
 @Slf4j
@@ -74,8 +74,8 @@ public class StroyparkRestController {
                     costStringNotPrior = element.getElementsByClass("c-product__price-value").text();
                 }
 
-                BigDecimal cost = StringConroller.stroyparkCostToBigDecimal(costStringNotPrior);
-                BigDecimal costWithPrior = StringConroller.stroyparkCostToBigDecimal(costStringWithPrior);
+                BigDecimal cost = StringController.stroyparkCostToBigDecimal(costStringNotPrior);
+                BigDecimal costWithPrior = StringController.stroyparkCostToBigDecimal(costStringWithPrior);
                 log.info("{}--{}--{}", name, cost, costWithPrior);
 
 
