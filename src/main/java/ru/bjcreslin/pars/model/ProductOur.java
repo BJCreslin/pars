@@ -16,7 +16,9 @@ import java.util.List;
 
 
 @Entity
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 @DynamicUpdate
 @DynamicInsert
 @SelectBeforeUpdate
@@ -35,11 +37,28 @@ public class ProductOur extends BaseEntity {
     @Column(name = "cost")
     private BigDecimal cost;
 
+    @Column(name = "base_quantity")
+    private Integer base;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "producttable",
-            joinColumns = @JoinColumn(name = "productourtable_id"),
-            inverseJoinColumns = @JoinColumn(name = "producttable"))
-    List<Product> surrogate = new ArrayList<>();
+    @Column(name = "central_quantity")
+    private Integer central;
+    @Column(name = "needed")
+    private Integer needed;
+
+    @Column(name = "groupe")
+    private String groupe;
+
+    public ProductOur(int code, int number, String stringCellValue) {
+        this.code = code;
+        this.needed = number;
+        groupe = name;
+    }
+
+
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "producttable",
+//            joinColumns = @JoinColumn(name = "productourtable_id"),
+//            inverseJoinColumns = @JoinColumn(name = "producttable"))
+//    List<Product> surrogate = new ArrayList<>();
 
 }
