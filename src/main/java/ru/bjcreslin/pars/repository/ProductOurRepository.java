@@ -6,5 +6,5 @@ import ru.bjcreslin.pars.model.ProductOur;
 
 
 @Repository
-public interface OurProductRepository extends JpaRepository<ProductOur, Long> {
+public interface ProductOurRepository extends JpaRepository<ProductOur, Long> {
 }

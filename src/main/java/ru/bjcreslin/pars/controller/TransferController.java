@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.bjcreslin.pars.Service.StorageService;
 import ru.bjcreslin.pars.Service.XLSService;
 import ru.bjcreslin.pars.controller.controllerExceptions.StorageFileNotFoundException;
+import ru.bjcreslin.pars.model.ProductOur;
 
 import javax.servlet.MultipartConfigElement;
 import java.io.IOException;
@@ -26,7 +27,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RequestMapping("/transfer")
+@RequestMapping("/sntbLoadXLS")
 @Controller
 public class TransferController {
 
@@ -72,7 +73,8 @@ public class TransferController {
         } else {
 
             try {
-                XLSService.getBaza8List(file.getInputStream());
+               List<ProductOur> productOurList=XLSService.getBaza8List(file.getInputStream());
+
             } catch (IOException e) {
                 /** Doit если exception
                  *
