@@ -40,10 +40,10 @@ public class ProductOurSetviceImpl implements ProductOurService {
             if (productOur.getCost().compareTo(BigDecimal.ONE) < 0) {
                 productOur.setCost(productOurFromBase.getCost());
             }
+            productOurRepository.delete(productOurFromBase);
 
 
         }
-
 
         productOurRepository.save(productOur);
     }
