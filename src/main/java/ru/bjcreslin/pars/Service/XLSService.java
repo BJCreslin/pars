@@ -91,7 +91,8 @@ public class XLSService {
     /**
      * Данные из xls- файла.
      * Возвращает List ProductOur с заполененным кодом, нужными остатками на СНТБ8
-     *названием и групп
+     * названием и групп
+     *
      * @return List<ProductOur>
      */
     public static List<ProductOur> getItemList(InputStream inputStream) {
@@ -146,7 +147,7 @@ public class XLSService {
 //                }
 
 
-                int number = 0;
+                int quantityNeeded = 0;
                 HSSFCell yourCell = sheet.getRow(iPos + shiftV).getCell(stolbecNumber);
                 DataFormatter fmt = new DataFormatter();
                 String dataFromCell = fmt.formatCellValue(yourCell);
@@ -157,7 +158,7 @@ public class XLSService {
                 String dataFromCel2 = dataFromCell.replaceAll("(,00)|\\D", "");
                 try {
                     if (!dataFromCell.isEmpty()) {
-                        number = Integer.parseInt(dataFromCel2);
+                        quantityNeeded = Integer.parseInt(dataFromCel2);
                     }
                 } catch (NumberFormatException n) {
                     System.out.println("code " + code + " " + dataFromCell + "  x" + dataFromCel2);
@@ -165,12 +166,14 @@ public class XLSService {
                 }
 
 
-                if ((number > 0) && (!flagToStop) && (!propuskaem)) {
+                if ((quantityNeeded > 0) && (!flagToStop) && (!propuskaem)) {
                     ProductOur item;
+
+                    String name = "";
                     try {
-                        item = new ProductOur(code, number, sheet.getRow(iPos + shiftV).getCell(stolbecName).getStringCellValue());
+                        name = sheet.getRow(iPos + shiftV).getCell(stolbecName).getStringCellValue();
                     } catch (IllegalStateException Excx) {
-                        item = new ProductOur(code, number, String.valueOf(sheet.getRow(iPos + shiftV).getCell(stolbecName).getNumericCellValue()));
+                        String.valueOf(sheet.getRow(iPos + shiftV).getCell(stolbecName).getNumericCellValue());
                     }
 
                     /*Записываем группу в item*/
@@ -180,7 +183,7 @@ public class XLSService {
                     } catch (Exception ex) {
                         groupe = "";
                     }
-                    item.setGroupe(groupe);
+                    item = new ProductOur(code, quantityNeeded, name, groupe);
 
                     itemtableList.add(item);
                 }

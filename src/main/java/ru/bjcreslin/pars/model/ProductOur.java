@@ -42,16 +42,31 @@ public class ProductOur extends BaseEntity {
 
     @Column(name = "central_quantity")
     private Integer central;
+
     @Column(name = "needed")
     private Integer needed;
 
     @Column(name = "groupe")
     private String groupe;
 
-    public ProductOur(int code, int number, String stringCellValue) {
+//    public ProductOur(int code, int number, String stringCellValue) {
+//        this.code = code;
+//        this.needed = number;
+//        groupe = stringCellValue;
+//        cost=BigDecimal.ZERO;
+//        central=0;
+//        base=0;
+//    }
+
+    public ProductOur(int code, int quantityNeeded, String name, String groupe) {
+
         this.code = code;
-        this.needed = number;
-        groupe = name;
+        this.needed = quantityNeeded;
+        this.name = name;
+        this.groupe = groupe;
+        cost = BigDecimal.ZERO;
+        base = 0;
+        central = 0;
     }
 
 

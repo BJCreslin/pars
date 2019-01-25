@@ -7,4 +7,6 @@ import ru.bjcreslin.pars.model.ProductOur;
 
 @Repository
 public interface ProductOurRepository extends JpaRepository<ProductOur, Long> {
+    boolean existsByCode(Integer code);
+    ProductOur getOneByCode(Integer code);
 }
