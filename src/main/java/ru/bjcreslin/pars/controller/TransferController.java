@@ -4,28 +4,22 @@ package ru.bjcreslin.pars.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
-import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.bjcreslin.pars.Service.StorageService;
 import ru.bjcreslin.pars.Service.XLSService;
-import ru.bjcreslin.pars.controller.controllerExceptions.StorageFileNotFoundException;
 import ru.bjcreslin.pars.model.ProductOur;
 
 import javax.servlet.MultipartConfigElement;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping("/sntbLoadXLS")
 @Controller
@@ -43,7 +37,7 @@ public class TransferController {
      * Главное меню для перемещения товара со склада Центральный на выставкаСПШ
      */
     public String index(Model model) {
-
+//todo сделать стартовую страницу загрузки файла
 
         return "transfer";
     }
@@ -69,7 +63,7 @@ public class TransferController {
 
         if (file.isEmpty()) {
 
-            /**Doit  если файл пустой**/
+           //todo файл пустой. сдеалть реализацию
         } else {
 
             try {
@@ -77,9 +71,7 @@ public class TransferController {
 
 
             } catch (IOException e) {
-                /** Doit если exception
-                 *
-                 */
+               //todo реализация при ексепшене
             }
 
         }

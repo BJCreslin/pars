@@ -50,6 +50,6 @@ public class ProductOurSetviceImpl implements ProductOurService {
 
     @Override
     public void saveAll(List<ProductOur> productOurLIst) {
-
+//todo сделать реализацию сохранения list
     }
 }
